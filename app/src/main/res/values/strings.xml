@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Sporking</string>
+    <string name="welcome">Welcome to Sporking</string>
+    <string name="temukan_lapangan">Temukan Lapangan untuk Bermain dan Berolahraga</string>
+    <string name="term_and_conditions">Terms &amp; Conditions</string>
+    <string name="term_of_use">By continuing you accept our Privacy Policy and terms of use</string>
+
+
+
+    //Signin and SignUp
+    <string name="daftar_akun">Daftar Akun</string>
+    <string name="nama_depan">Nama Depan</string>
+    <string name="nama_belakang">Nama Belakang</string>
+
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="repeat_password">Ulangi Kata Sandi</string>
+
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+
+    <string name="atau">Atau</string>
+
+    <string name="lupa_password">Lupa Password</string>
+    <string name="belum_punya_akun">Belum punya akun? Daftar</string>
+    <string name="sudah_punya_akun">Sudah punya akun? Masuk</string>
+
+    //buttons
+    <string name="masuk">Masuk</string>
+    <string name="lanjut">Lanjut</string>
+    <string name="daftar_dengan_google">Daftar dengan Google</string>
+
+    //Pages
+    <string name="home">Hello This is Home</string>
+
+    //I dont know
+    <string name="akun">Akun</string>
+    <string name="beri_rating">Beri Rating</string>
+    <string name="notifikasi_keamanan">Notifikasi Keamanan</string>
+    <string name="alamat_email">Alamat Email</string>
+    <string name="hapus_akun">Hapus Akun</string>
+    <string name="profile">Profile</string>
+    <string name="notifikasi_keamanan_topapp">Notifikasi Keamanan</string>
+    <string name="none"></string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="repassword">Tulis Ulang Password Baru</string>
+    <string name="chat_and_login">Chat dan Login Anda bersifat privat</string>
+    <string name="passowrd_saatini">Password Saat Ini</string>
+    <string name="dapatkan_notifikasi">Dapatkan notifikasi ketika kode keamanan login anda berubah untuk salah satu alamat email. jika anda memiliki beberapa perangkat, setelan ini harus di aktifkan di setiap perangkat yang anda ingin notifikasinya di tampilkan. Pelajari selengkapnya</string>
+
+    <string name="password_anda_paling_tidak">Password anda harus paling tidak 6 karakter dan harus menyertakan kombinasi angka, huruf, dan karakter khusus (!@#$)</string>
+
+
+
+
+</resources>
