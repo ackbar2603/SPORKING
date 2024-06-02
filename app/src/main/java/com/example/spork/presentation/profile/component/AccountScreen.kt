@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.example.spork.R
 import com.example.spork.presentation.component.TopBar
 import com.example.spork.presentation.component.transparentButtonComponent
-import com.example.spork.presentation.profile.profileScreen
 
 @Composable
 fun accountScreenProfile(){

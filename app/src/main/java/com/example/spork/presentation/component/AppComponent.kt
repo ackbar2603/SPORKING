@@ -1,6 +1,7 @@
 package com.example.spork.presentation.component
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -18,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.BottomAppBar
@@ -29,6 +33,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
@@ -545,4 +551,64 @@ fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit){
             }
 
     })
+}
+
+//@Composable
+//fun SwitchButton(){
+//    Column (
+//        modifier = Modifier.fillMaxWidth()
+//    ){
+//        val checkedState = remember {
+//            mutableStateOf(false)
+//        }
+//
+//        Switch(
+//            checked = checkedState.value,
+//            onCheckedChange ={ checkedState.value = it },
+//            colors = SwitchDefaults.colors(Color.Green)
+//        )
+//
+//        if(checkedState.value){
+//            Toast.makeText(this@AppComponent, "On", Toast.LENGTH_SHORT).show()
+//        }else{
+//            Toast.makeText(this@AppComponent, "Off", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//}
+
+@Composable
+fun Switches(value: String){
+    
+    Row (
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Absolute.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        var isChecked by remember {
+            mutableStateOf(true)
+        }
+        Text(text = value,
+            modifier = Modifier.size(width = 260.dp, height = 40.dp),
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                fontStyle = FontStyle.Normal
+            ),
+            color = colorResource(id = R.color.blackfont),
+            textAlign = TextAlign.Start
+        )
+
+
+        Switch(
+            checked = isChecked,
+            onCheckedChange = { isChecked = it },
+            thumbContent = {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = null,
+                    modifier = Modifier.size(SwitchDefaults.IconSize)
+                )
+            }
+        )
+    }
 }

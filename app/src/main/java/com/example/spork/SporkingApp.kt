@@ -20,6 +20,9 @@ import com.example.spork.presentation.testing.agreementScreen
 import com.example.spork.presentation.welcome.welcomeScreen
 import com.example.spork.navigation.Screen
 import com.example.spork.presentation.homeScreen
+import com.example.spork.presentation.profile.component.changePasswordScreen
+import com.example.spork.presentation.profile.component.notifySecurityScreen
+import com.example.spork.presentation.profile.profileScreen
 
 
 @Composable
@@ -32,7 +35,7 @@ fun sporkingPostOfficeApp(
     ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.HomeScreen.route
+            startDestination = Screen.SecurityNotify.route
         ){
             composable(Screen.Welcome.route){
                 welcomeScreen(navController)
@@ -60,7 +63,15 @@ fun sporkingPostOfficeApp(
             }
 
 
-
+            composable(Screen.ProfileScreen.route){
+                profileScreen()
+            }
+            composable(Screen.ChangePasswordScreen.route){
+                changePasswordScreen()
+            }
+            composable(Screen.SecurityNotify.route){
+                notifySecurityScreen()
+            }
             //This composable screen is for testing purposes only
             composable(Screen.Agreement.route){
                 agreementScreen()

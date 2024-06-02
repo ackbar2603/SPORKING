@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.example.spork.R
 import com.example.spork.presentation.component.BoldTextComponent
 import com.example.spork.presentation.component.NormalTextComponentJustify
+import com.example.spork.presentation.component.Switches
 import com.example.spork.presentation.component.TopBar
 
 @Composable
@@ -50,6 +51,11 @@ fun notifySecurityScreen(){
                 
                 Spacer(modifier = Modifier.height(8.dp))
                 NormalTextComponentJustify(value = stringResource(id = R.string.dapatkan_notifikasi))
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Switches(value = stringResource(id = R.string.tampilkan_notifikasi))
+
             }
         }
 
