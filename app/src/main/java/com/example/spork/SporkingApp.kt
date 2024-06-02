@@ -20,6 +20,7 @@ import com.example.spork.presentation.testing.agreementScreen
 import com.example.spork.presentation.welcome.welcomeScreen
 import com.example.spork.navigation.Screen
 import com.example.spork.presentation.homeScreen
+import com.example.spork.presentation.profile.component.accountScreenProfile
 import com.example.spork.presentation.profile.component.changePasswordScreen
 import com.example.spork.presentation.profile.component.notifySecurityScreen
 import com.example.spork.presentation.profile.profileScreen
@@ -35,16 +36,16 @@ fun sporkingPostOfficeApp(
     ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.SecurityNotify.route
+            startDestination = Screen.SignIn.route
         ){
             composable(Screen.Welcome.route){
                 welcomeScreen(navController)
             }
             composable(Screen.SignIn.route){
-                signInScreen()
+                signInScreen(navController)
             }
             composable(Screen.SignUp.route){
-                signUpScreen()
+                signUpScreen(navController)
             }
             composable(Screen.HomeScreen.route){
                 homeScreen(navController)
@@ -62,16 +63,21 @@ fun sporkingPostOfficeApp(
                 )
             }
 
-
+            //profile navigation
             composable(Screen.ProfileScreen.route){
-                profileScreen()
+                profileScreen(navController)
+            }
+            composable(Screen.AccountScreen.route){
+                accountScreenProfile(navController)
             }
             composable(Screen.ChangePasswordScreen.route){
-                changePasswordScreen()
+                changePasswordScreen(navController)
             }
             composable(Screen.SecurityNotify.route){
-                notifySecurityScreen()
+                notifySecurityScreen(navController)
             }
+
+
             //This composable screen is for testing purposes only
             composable(Screen.Agreement.route){
                 agreementScreen()

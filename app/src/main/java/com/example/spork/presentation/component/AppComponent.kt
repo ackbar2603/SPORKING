@@ -511,12 +511,30 @@ fun CheckBoxComponent(value: String, onTextSelected: (String) -> Unit){
             mutableStateOf(false)
         }
 
-        Checkbox(checked = checkedState.value,
-            onCheckedChange = {
-                checkedState.value != checkedState.value
-            }
+        Checkbox(
+            checked = checkedState.value,
+            onCheckedChange = { checkedState.value = it}
         )
         ClickableTextComponent(value = value, onTextSelected)
+    }
+}
+
+@Composable
+fun CheckBoxComponentWithTextOnly(value: String){
+    Row (modifier = Modifier
+        .fillMaxWidth()
+        .heightIn(56.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        val checkedState = remember {
+            mutableStateOf(false)
+        }
+
+        Checkbox(
+            checked = checkedState.value,
+            onCheckedChange = { checkedState.value = it}
+        )
+        Text(text = value)
     }
 }
 
@@ -553,6 +571,80 @@ fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit){
     })
 }
 
+@Composable
+fun ClickableTextBelumPunyaAkunComponent(onTextSelected: (String) -> Unit){
+    val initialText = "Belum Punya Akun? "
+    val daftarText = "Daftar"
+
+    val annotatedString = buildAnnotatedString {
+        append(initialText)
+        withStyle(style = SpanStyle(color = clickableBlueish)){
+            pushStringAnnotation(tag = daftarText, annotation = daftarText)
+            append(daftarText)
+        }
+    }
+
+
+    ClickableText(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(),
+        style = TextStyle(
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal,
+            textAlign = TextAlign.Center
+        ),
+        text = annotatedString, onClick = {offset ->
+        annotatedString.getStringAnnotations(offset,offset)
+            .firstOrNull()?.also { span->
+                Log.d("ClickableTextComponent", "{$span}")
+
+                if((span.item == daftarText)) {
+                    onTextSelected(span.item)
+                }
+            }
+
+    })
+}
+
+@Composable
+fun ClickableTextSudahPunyaAkunComponent(onTextSelected: (String) -> Unit){
+    val initialText = "Sudah Punya Akun? "
+    val masukText = "Masuk"
+
+    val annotatedString = buildAnnotatedString {
+        append(initialText)
+        withStyle(style = SpanStyle(color = clickableBlueish)){
+            pushStringAnnotation(tag = masukText, annotation = masukText)
+            append(masukText)
+        }
+    }
+
+
+    ClickableText(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(),
+        style = TextStyle(
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal,
+            textAlign = TextAlign.Center
+        ),
+        text = annotatedString, onClick = {offset ->
+            annotatedString.getStringAnnotations(offset,offset)
+                .firstOrNull()?.also { span->
+                    Log.d("ClickableTextComponent", "{$span}")
+
+                    if((span.item == masukText)) {
+                        onTextSelected(span.item)
+                    }
+                }
+
+        })
+}
+
 //@Composable
 //fun SwitchButton(){
 //    Column (
@@ -585,7 +677,7 @@ fun Switches(value: String){
         verticalAlignment = Alignment.CenterVertically
     ){
         var isChecked by remember {
-            mutableStateOf(true)
+            mutableStateOf(false)
         }
         Text(text = value,
             modifier = Modifier.size(width = 260.dp, height = 40.dp),
@@ -612,3 +704,4 @@ fun Switches(value: String){
         )
     }
 }
+

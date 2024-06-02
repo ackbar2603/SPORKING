@@ -15,15 +15,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.spork.R
+import com.example.spork.navigation.Screen
 import com.example.spork.presentation.component.TopBar
 import com.example.spork.presentation.component.transparentButtonComponent
 
 @Composable
-fun accountScreenProfile(){
+fun accountScreenProfile(navController: NavController){
 
     Scaffold (
-        topBar = { TopBar(backButton = {null}, value = stringResource(id = R.string.akun)) }
+        topBar = { TopBar(backButton = {navController.navigate(Screen.ProfileScreen.route)}, value = stringResource(id = R.string.akun)) }
     ){innerPadding ->
         Surface (
             modifier = Modifier
@@ -36,11 +38,11 @@ fun accountScreenProfile(){
                 modifier = Modifier.fillMaxSize()
             ){
                 transparentButtonComponent(value = stringResource(id = R.string.notifikasi_keamanan),
-                    image = painterResource(id = R.drawable.icon_lock64), onTaskClick = {null})
+                    image = painterResource(id = R.drawable.icon_lock64), onTaskClick = {navController.navigate(Screen.SecurityNotify.route)})
                 Spacer(modifier = Modifier.height(12.dp))
 
                 transparentButtonComponent(value = stringResource(id = R.string.ubah_password), image = painterResource(
-                    id = R.drawable.icon_key64), onTaskClick = {null})
+                    id = R.drawable.icon_key64), onTaskClick = {navController.navigate(Screen.ChangePasswordScreen.route)})
                 Spacer(modifier = Modifier.height(12.dp))
 
                 transparentButtonComponent(value = stringResource(id = R.string.alamat_email),
@@ -55,8 +57,8 @@ fun accountScreenProfile(){
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun accountScreenProfilePreview(){
-    accountScreenProfile()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun accountScreenProfilePreview(){
+//    accountScreenProfile()
+//}

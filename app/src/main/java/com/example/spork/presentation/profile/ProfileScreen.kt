@@ -15,13 +15,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.spork.R
+import com.example.spork.navigation.Screen
 import com.example.spork.presentation.component.BoldTextComponent
 import com.example.spork.presentation.component.TopBar
 import com.example.spork.presentation.component.transparentButtonComponent
 
 @Composable
-fun profileScreen(){
+fun profileScreen(navController: NavController){
 Scaffold (
     topBar = { TopBar(backButton = {null}, value = stringResource(id = R.string.none)) }
 ){innerPadding ->
@@ -39,7 +41,7 @@ Scaffold (
             Spacer(modifier = Modifier.height(12.dp))
 
             transparentButtonComponent(value = stringResource(id = R.string.akun), image = painterResource(
-                id = R.drawable.icon_lock), onTaskClick = {null}
+                id = R.drawable.icon_lock), onTaskClick = {navController.navigate(Screen.AccountScreen.route)}
             )
             Spacer(modifier = Modifier.height(8.dp))
             transparentButtonComponent(value = stringResource(id = R.string.beri_rating), image = painterResource(
@@ -52,8 +54,8 @@ Scaffold (
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun profileScreenPreview(){
-    profileScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun profileScreenPreview(){
+//    profileScreen()
+//}

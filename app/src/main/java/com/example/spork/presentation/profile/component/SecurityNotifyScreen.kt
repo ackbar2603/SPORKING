@@ -18,17 +18,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.spork.R
+import com.example.spork.navigation.Screen
 import com.example.spork.presentation.component.BoldTextComponent
 import com.example.spork.presentation.component.NormalTextComponentJustify
 import com.example.spork.presentation.component.Switches
 import com.example.spork.presentation.component.TopBar
 
 @Composable
-fun notifySecurityScreen(){
+fun notifySecurityScreen(navController: NavController){
 
     Scaffold (
-        topBar = { TopBar(backButton = {null}, value = stringResource(id = R.string.notifikasi_keamanan_topapp)) }
+        topBar = { TopBar(backButton = {navController.navigate(Screen.AccountScreen.route)}, value = stringResource(id = R.string.notifikasi_keamanan_topapp)) }
     ){innerPadding ->
         Surface (
             modifier = Modifier
@@ -63,8 +65,8 @@ fun notifySecurityScreen(){
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun notifySecurityScreenPreview(){
-    notifySecurityScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun notifySecurityScreenPreview(){
+//    notifySecurityScreen()
+//}

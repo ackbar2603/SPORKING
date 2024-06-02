@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.spork.R
 import com.example.spork.presentation.component.BoldTextComponent
 import com.example.spork.presentation.component.ButtonComponent
@@ -25,10 +26,11 @@ import com.example.spork.presentation.component.MyOutlinedTextField
 import com.example.spork.presentation.component.NormalTextComponent
 import com.example.spork.presentation.component.PasswordTextField
 import com.example.spork.navigation.Screen
+import com.example.spork.presentation.component.ClickableTextBelumPunyaAkunComponent
 
 
 @Composable
-fun signInScreen(){
+fun signInScreen(navController: NavController){
 
     Surface (
         modifier = Modifier
@@ -62,10 +64,8 @@ fun signInScreen(){
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            Spacer(modifier = Modifier.height(30.dp))
-            NormalTextComponent(value = stringResource(id = R.string.lupa_password))
             Spacer(modifier = Modifier.height(12.dp))
-            NormalTextComponent(value = stringResource(id = R.string.belum_punya_akun))
+            ClickableTextBelumPunyaAkunComponent(onTextSelected = {navController.navigate(Screen.SignUp.route)})
             
             Spacer(modifier = Modifier.height(30.dp))
             ButtonComponent(value = stringResource(id = R.string.masuk), onTaskClick = {null})
@@ -86,7 +86,6 @@ fun signInScreen(){
 @Preview
 @Composable
 fun signInScreenPreview(){
-    signInScreen()
+    signInScreen(navController = rememberNavController())
 }
 
-//navController.navigate(Screen.SignUp.route)

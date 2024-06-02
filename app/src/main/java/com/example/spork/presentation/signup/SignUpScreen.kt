@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.spork.R
 import com.example.spork.presentation.component.BoldTextOrangeComponent
 import com.example.spork.presentation.component.ButtonComponent
@@ -25,9 +26,10 @@ import com.example.spork.presentation.component.NormalTextComponent
 import com.example.spork.presentation.component.PasswordTextField
 import com.example.spork.presentation.component.TopBar
 import com.example.spork.navigation.Screen
+import com.example.spork.presentation.component.ClickableTextSudahPunyaAkunComponent
 
 @Composable
-fun signUpScreen(){
+fun signUpScreen(navController: NavController){
     Scaffold (
         topBar = { TopBar(backButton = {null}, value = stringResource(id = R.string.none))}
     ){innerPadding ->
@@ -60,11 +62,11 @@ fun signUpScreen(){
                     id = R.string.repeat_password), painterResource = painterResource(id = R.drawable.lock)
                 )
                 CheckBoxComponent(value = stringResource(id = R.string.term_of_use),
-                    onTextSelected = {null}
+                    onTextSelected = {navController.navigate(Screen.Agreement.route)}
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
-                NormalTextComponent(value = stringResource(id = R.string.sudah_punya_akun))
+                ClickableTextSudahPunyaAkunComponent(onTextSelected = {navController.navigate(Screen.SignIn.route)})
                 Spacer(modifier = Modifier.height(24.dp))
 
                 ButtonComponent(value = stringResource(id = R.string.daftar_akun), onTaskClick = { null })
@@ -77,7 +79,7 @@ fun signUpScreen(){
 @Preview
 @Composable
 fun signUpScreenPreview(){
-    signUpScreen()
+    signUpScreen(navController = rememberNavController())
 }
 
 //navController.navigate(Screen.SignIn.route)
