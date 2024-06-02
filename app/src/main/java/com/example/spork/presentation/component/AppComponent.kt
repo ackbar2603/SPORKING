@@ -1,10 +1,15 @@
 package com.example.spork.presentation.component
 
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
@@ -42,12 +48,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -64,6 +73,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 import com.example.spork.R
 import com.example.spork.navigation.Screen
 import com.example.spork.ui.theme.clickableBlueish
@@ -702,6 +712,59 @@ fun Switches(value: String){
                 )
             }
         )
+    }
+}
+
+@Composable
+fun ImagePickerGallery(){
+    Box (){
+
+        val imageUri = rememberSaveable {
+            mutableStateOf("")
+        }
+        val painter = rememberAsyncImagePainter(
+            imageUri.value.ifEmpty { R.drawable.person_94 }
+        )
+        val launcher = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.GetContent()
+        ) {uri: Uri? ->
+            uri?.let { imageUri.value = it.toString() }
+        }
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+        ){
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .size(180.dp)
+                    .background(Color.Gray)
+                    .border(
+                        width = 1.dp,
+                        color = Color.White,
+                        shape = CircleShape
+                    )
+            )
+        }
+        Box (
+            modifier = Modifier.padding(top = 130.dp, start = 210.dp)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.icon_camera_white_64),
+                contentDescription = "camera",
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(color = mainOrange)
+                    .size(40.dp)
+                    .padding(10.dp)
+                    .clickable { launcher.launch("image/*") }
+            )
+        }
     }
 }
 

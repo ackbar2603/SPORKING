@@ -16,9 +16,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.spork.R
 import com.example.spork.navigation.Screen
 import com.example.spork.presentation.component.BoldTextComponent
+import com.example.spork.presentation.component.ImagePickerGallery
 import com.example.spork.presentation.component.TopBar
 import com.example.spork.presentation.component.transparentButtonComponent
 
@@ -37,7 +39,7 @@ Scaffold (
         Column (
             modifier = Modifier.fillMaxSize()
         ){
-            BoldTextComponent(value = stringResource(id = R.string.welcome))
+            ImagePickerGallery()
             Spacer(modifier = Modifier.height(12.dp))
 
             transparentButtonComponent(value = stringResource(id = R.string.akun), image = painterResource(
@@ -54,8 +56,8 @@ Scaffold (
 
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun profileScreenPreview(){
-//    profileScreen()
-//}
+@Preview(showBackground = true)
+@Composable
+fun profileScreenPreview(){
+    profileScreen(navController = rememberNavController())
+}

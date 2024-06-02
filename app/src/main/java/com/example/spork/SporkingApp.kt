@@ -36,7 +36,7 @@ fun sporkingPostOfficeApp(
     ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.SignIn.route
+            startDestination = Screen.ProfileScreen.route
         ){
             composable(Screen.Welcome.route){
                 welcomeScreen(navController)
