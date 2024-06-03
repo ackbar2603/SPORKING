@@ -28,6 +28,7 @@
 
     //buttons
     <string name="masuk">Masuk</string>
+    <string name="mulai">Mulai</string>
     <string name="lanjut">Lanjut</string>
     <string name="daftar_dengan_google">Daftar dengan Google</string>
 
@@ -53,6 +54,14 @@
     <string name="dapatkan_notifikasi">Dapatkan notifikasi ketika kode keamanan login anda berubah untuk salah satu alamat email. jika anda memiliki beberapa perangkat, setelan ini harus di aktifkan di setiap perangkat yang anda ingin notifikasinya di tampilkan. Pelajari selengkapnya</string>
     <string name="password_anda_paling_tidak">Password anda harus paling tidak 6 karakter dan harus menyertakan kombinasi angka, huruf, dan karakter khusus (!@#$)</string>
 
+
+    //community
+
+    <string name="komunitas">Komunitas</string>
+    <string name="tetap_terhubung">Tetap terhubung dengan komunitas</string>
+    <string name="contoh_komunitas">Lihat contoh komunitas</string>
+    <string name="mulai_komunitas">Mulai Komunitas Anda</string>
+    <string name="bergabunglah_komunitas">Bergabunglah dengan komunitas olahraga kami yang aktif dan mendukung. Temukan teman latihan, berbagi tips, dan saling memotivasi dalam mencapai tujuan kebugaran.</string>
 
 
 

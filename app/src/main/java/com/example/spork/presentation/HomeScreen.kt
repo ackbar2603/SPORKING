@@ -24,7 +24,7 @@ import com.example.spork.presentation.component.TopBar
 
 @Composable
 fun homeScreen(
-    navController: NavController,
+    navController: NavController
 
     ){
     val navBackStackEntry by navController.currentBackStackEntryAsState()

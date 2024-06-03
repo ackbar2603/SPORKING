@@ -3,6 +3,7 @@ package com.example.spork
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.internal.composableLambda
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,6 +20,8 @@ import com.example.spork.presentation.signup.signUpScreen
 import com.example.spork.presentation.testing.agreementScreen
 import com.example.spork.presentation.welcome.welcomeScreen
 import com.example.spork.navigation.Screen
+import com.example.spork.presentation.community.communityScreen
+import com.example.spork.presentation.community.newCommunityScreen
 import com.example.spork.presentation.homeScreen
 import com.example.spork.presentation.profile.component.accountScreenProfile
 import com.example.spork.presentation.profile.component.changePasswordScreen
@@ -75,6 +78,14 @@ fun sporkingPostOfficeApp(
             }
             composable(Screen.SecurityNotify.route){
                 notifySecurityScreen(navController)
+            }
+
+            //Community
+            composable(Screen.CommunityScreen.route){
+                communityScreen(navController)
+            }
+            composable(Screen.NewCommunityScreen.route){
+                newCommunityScreen(navController)
             }
 
 
