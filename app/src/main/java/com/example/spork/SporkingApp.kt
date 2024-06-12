@@ -13,20 +13,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.spork.presentation.news.newsDetailScreen
-import com.example.spork.presentation.news.newsScreen
-import com.example.spork.presentation.signin.signInScreen
-import com.example.spork.presentation.signup.signUpScreen
-import com.example.spork.presentation.testing.agreementScreen
-import com.example.spork.presentation.welcome.welcomeScreen
+import com.example.spork.presentation.allscreen.news.newsDetailScreen
+import com.example.spork.presentation.allscreen.news.newsScreen
+import com.example.spork.presentation.allscreen.signin.signInScreen
+import com.example.spork.presentation.allscreen.signup.signUpScreen
+import com.example.spork.presentation.allscreen.testing.agreementScreen
+import com.example.spork.presentation.allscreen.welcome.welcomeScreen
 import com.example.spork.navigation.Screen
-import com.example.spork.presentation.community.communityScreen
-import com.example.spork.presentation.community.newCommunityScreen
+import com.example.spork.presentation.allscreen.community.communityScreen
+import com.example.spork.presentation.allscreen.community.newCommunityScreen
 import com.example.spork.presentation.homeScreen
-import com.example.spork.presentation.profile.component.accountScreenProfile
-import com.example.spork.presentation.profile.component.changePasswordScreen
-import com.example.spork.presentation.profile.component.notifySecurityScreen
-import com.example.spork.presentation.profile.profileScreen
+import com.example.spork.presentation.allscreen.profile.component.accountScreenProfile
+import com.example.spork.presentation.allscreen.profile.component.changePasswordScreen
+import com.example.spork.presentation.allscreen.profile.component.notifySecurityScreen
+import com.example.spork.presentation.allscreen.profile.profileScreen
+import com.example.spork.presentation.allscreen.signin.LoginScreen
+import com.example.spork.presentation.allscreen.welcome.SplashScreen
 
 
 @Composable
@@ -39,13 +41,19 @@ fun sporkingPostOfficeApp(
     ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.ProfileScreen.route
+            startDestination = Screen.Splash.route
         ){
+            composable(Screen.Splash.route){
+                SplashScreen(navController)
+            }
             composable(Screen.Welcome.route){
                 welcomeScreen(navController)
             }
+            composable(Screen.Login.route){
+                LoginScreen(navController)
+            }
             composable(Screen.SignIn.route){
-                signInScreen(navController)
+                LoginScreen(navController)
             }
             composable(Screen.SignUp.route){
                 signUpScreen(navController)

@@ -1,6 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
+//    id("com.google.dagger.hilt.android")
+    id ("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -59,6 +65,38 @@ dependencies {
     //Icon Extended
     implementation ("androidx.compose.material:material-icons-extended:1.6.7")
 
+    //Preferences Data Store
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+
+    //{FIREBASE}
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-analytics")
+
+//    implementation(platform("androidx.compose:compose-bom:2024.05.00"))
+
+
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+
+//    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+//    implementation("androidx.hilt:hilt-work:1.2.0")
+
+//    implementation ("com.google.dagger:hilt-android:2.42")
+//    kapt ("com.google.dagger:hilt-android-compiler:2.42")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //Google Shit
+//    implementation ("androidx.credentials:credentials:1.2.2")
+//    implementation ("androidx.credentials:credentials-play-services-auth:1.2.2")
+//    implementation ("com.google.android.libraries.identity.googleid:googleid:1.5.0-alpha01")
+
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -68,6 +106,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.datastore.preferences.core.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

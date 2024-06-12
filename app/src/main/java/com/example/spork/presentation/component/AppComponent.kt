@@ -2,6 +2,7 @@ package com.example.spork.presentation.component
 
 import android.net.Uri
 import android.util.Log
+import android.widget.NumberPicker.OnValueChangeListener
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -56,6 +57,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -431,7 +433,7 @@ fun PasswordTextField(labelValue: String, value: String, painterResource: Painte
 }
 
 @Composable
-fun ButtonComponent(value: String, onTaskClick: () -> Unit){
+fun ButtonComponent(value: String, onTaskClick: () -> Unit,){
     Button(
         onClick = onTaskClick,
         modifier = Modifier
@@ -441,6 +443,44 @@ fun ButtonComponent(value: String, onTaskClick: () -> Unit){
         contentPadding = PaddingValues(),
         colors = ButtonDefaults.buttonColors(mainOrange)
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(48.dp)
+                .background(
+                    color = mainOrange
+                ),
+            contentAlignment = Alignment.Center
+        ){
+            Text(text = value,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
+    }
+}
+
+@Composable
+fun LoginButton(value: String, onLoginClick: () -> Unit){
+
+    var userEmail by rememberSaveable {
+        mutableStateOf("")
+    }
+    var password by rememberSaveable {
+        mutableStateOf("")
+    }
+
+
+
+    Button (
+        onClick = onLoginClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(52.dp),
+        shape = RoundedCornerShape(7.dp),
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(mainOrange)
+    ){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
